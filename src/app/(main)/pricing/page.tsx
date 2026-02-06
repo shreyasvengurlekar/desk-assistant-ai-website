@@ -1,31 +1,35 @@
 import { Metadata } from "next";
-import { Check } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Check, X } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description: "Simple and transparent pricing for Desk Assistant AI. Start for free and upgrade for powerful pro features.",
 };
 
-const freeFeatures = [
-  "AI-powered suggestions",
-  "Manual approval of changes",
-  "Basic file organization",
-  "Activity log with undo",
-  "Downloads & Desktop cleanup",
-];
-
-const proFeatures = [
-  "All features in Free, plus:",
-  "Advanced automation rules",
-  "AI Chat for file search",
-  "Deep scan for smarter grouping",
-  "Duplicate file cleanup",
-  "Priority updates & support",
+const featureComparison = [
+    { feature: 'AI-powered suggestions', free: true, pro: true },
+    { feature: 'Manual approval of changes', free: true, pro: true },
+    { feature: 'Activity log with undo', free: true, pro: true },
+    { feature: 'Downloads & Desktop cleanup', free: true, pro: true },
+    { feature: 'Basic file organization', free: 'Basic', pro: 'Advanced' },
+    { feature: 'AI Chat for file search', free: false, pro: true },
+    { feature: 'Duplicate file cleanup', free: false, pro: true },
+    { feature: 'Advanced automation rules', free: false, pro: true },
+    { feature: 'Customizable rule engine', free: false, pro: true },
+    { feature: 'Priority updates & support', free: false, pro: true },
 ];
 
 const faqItems = [
@@ -47,6 +51,14 @@ const faqItems = [
     }
 ];
 
+const FeatureCheck = ({ available }: { available: boolean | string }) => {
+  if (typeof available === 'string') {
+    return <span className="text-sm font-medium">{available}</span>;
+  }
+  return available ? <Check className="h-5 w-5 text-primary" /> : <X className="h-5 w-5 text-muted-foreground" />;
+};
+
+
 export default function PricingPage() {
   return (
     <div className="container py-12 md:py-20">
@@ -59,54 +71,48 @@ export default function PricingPage() {
         </p>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl mx-auto items-start">
-        <Card className="flex flex-col h-full">
-          <CardHeader>
-            <CardTitle className="text-2xl">Free</CardTitle>
-            <p className="text-4xl font-bold mt-2">$0</p>
-            <p className="text-muted-foreground">For all users getting started.</p>
-          </CardHeader>
-          <CardContent className="flex-grow">
-            <ul className="space-y-3">
-              {freeFeatures.map((feature) => (
-                <li key={feature} className="flex items-start">
-                  <Check className="mr-2 mt-1 h-5 w-5 shrink-0 text-primary" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-          <CardFooter>
-            <Button asChild className="w-full" variant="outline">
-                <Link href="/download">Download (Coming Soon)</Link>
-            </Button>
-          </CardFooter>
-        </Card>
-
-        <Card className="border-primary ring-2 ring-primary flex flex-col h-full shadow-lg">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-                <CardTitle className="text-2xl">Pro</CardTitle>
-                <Badge>In-app purchase</Badge>
-            </div>
-            <p className="text-4xl font-bold mt-2">Coming Soon</p>
-            <p className="text-muted-foreground">For professionals and power users.</p>
-          </CardHeader>
-          <CardContent className="flex-grow">
-            <ul className="space-y-3">
-              {proFeatures.map((feature) => (
-                <li key={feature} className="flex items-start">
-                  <Check className="mr-2 mt-1 h-5 w-5 shrink-0 text-primary" />
-                  <span className={feature.includes('All features') ? 'font-semibold' : ''}>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-          <CardFooter>
-            <Button asChild className="w-full">
-                <Link href="/download#join-waitlist">Join Waitlist for Pro</Link>
-            </Button>
-          </CardFooter>
+      <div className="mt-16 mx-auto max-w-5xl">
+        <Card className="overflow-hidden">
+            <Table>
+                <TableHeader>
+                    <TableRow className="hover:bg-transparent">
+                        <TableHead className="w-[40%] text-base">Features</TableHead>
+                        <TableHead className="w-[30%] text-center">
+                            <p className="text-2xl font-bold">Free</p>
+                            <p className="text-muted-foreground text-sm mt-1">$0</p>
+                        </TableHead>
+                        <TableHead className="w-[30%] text-center">
+                            <div className="flex items-center justify-center gap-2">
+                                <p className="text-2xl font-bold">Pro</p>
+                                <Badge>Coming Soon</Badge>
+                            </div>
+                            <p className="text-muted-foreground text-sm mt-1">One-time purchase</p>
+                        </TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {featureComparison.map((item) => (
+                        <TableRow key={item.feature}>
+                            <TableCell className="font-medium">{item.feature}</TableCell>
+                            <TableCell className="text-center"><div className="flex justify-center"><FeatureCheck available={item.free} /></div></TableCell>
+                            <TableCell className="text-center"><div className="flex justify-center"><FeatureCheck available={item.pro} /></div></TableCell>
+                        </TableRow>
+                    ))}
+                    <TableRow className="bg-muted/50 hover:bg-muted/50">
+                        <TableCell></TableCell>
+                        <TableCell className="text-center p-4">
+                            <Button asChild className="w-full max-w-xs" variant="outline">
+                                <Link href="/download">Download</Link>
+                            </Button>
+                        </TableCell>
+                        <TableCell className="text-center p-4">
+                            <Button asChild className="w-full max-w-xs">
+                                <Link href="/download#join-waitlist">Join Waitlist</Link>
+                            </Button>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
         </Card>
       </div>
       <p className="mt-8 text-center text-sm text-muted-foreground">*Pricing and features are subject to change during development.</p>

@@ -14,6 +14,7 @@ import {
   Monitor,
   UploadCloud,
   ChevronRight,
+  XCircle,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -249,7 +250,7 @@ function PrivacySection() {
               <ul className="space-y-2">
                 {weNeverCollect.map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <CheckCircle className="mr-2 mt-1 h-4 w-4 shrink-0 text-red-500" />
+                    <XCircle className="mr-2 mt-1 h-4 w-4 shrink-0 text-red-500" />
                     <span>{item}</span>
                   </li>
                 ))}
