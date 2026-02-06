@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { NAV_LINKS } from '@/lib/constants';
@@ -58,7 +58,7 @@ export function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <Button asChild className="hidden md:inline-flex" size="sm">
             <Link href="/download">Download</Link>
           </Button>
@@ -71,6 +71,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+              </SheetHeader>
               <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                 <Logo />
                 <span className="font-bold">Desk Assistant AI</span>
