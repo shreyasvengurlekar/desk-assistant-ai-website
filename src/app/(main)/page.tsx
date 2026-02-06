@@ -42,7 +42,7 @@ export default function HomePage() {
 function HeroSection() {
   return (
     <section className="py-20 md:py-32">
-      <div className="container px-4 text-center">
+      <div className="container text-center">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
           Organize and find files on your Windows PC
         </h1>
@@ -95,7 +95,7 @@ const problems = [
 function ProblemSection() {
   return (
     <section className="bg-muted py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Sound Familiar?</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -119,7 +119,7 @@ function ProblemSection() {
 function SolutionSection() {
     return (
         <section className="py-20 md:py-28">
-            <div className="container px-4 text-center">
+            <div className="container text-center">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">A File Assistant That Actually Helps</h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
                     Desk Assistant AI works like a smart file manager that lives inside your computer. It suggests ways to organize your files, and you have the final say. It's like having a personal assistant for your digital clutter.
@@ -144,7 +144,7 @@ const coreFeatures = [
 function CoreFeaturesSection() {
   return (
     <section className="py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Powerful Features, Simple Interface</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -185,7 +185,7 @@ const howItWorksSteps = [
 function HowItWorksSection() {
   return (
     <section className="bg-muted py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">How It Works</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -228,7 +228,7 @@ function PrivacySection() {
 
   return (
     <section className="py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Your Files Stay Yours. Period.</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -284,7 +284,7 @@ const callouts = [
 function DemoSection() {
   return (
     <section className="bg-muted py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">See It In Action</h2>
           <p className="mt-4 text-lg text-muted-foreground">A glimpse into the clean and intuitive interface.</p>
@@ -319,7 +319,7 @@ function DemoSection() {
 function PricingPreviewSection() {
   return (
     <section className="py-20 md:py-28">
-      <div className="container px-4">
+      <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Simple, Fair Pricing</h2>
           <p className="mt-4 text-lg text-muted-foreground">

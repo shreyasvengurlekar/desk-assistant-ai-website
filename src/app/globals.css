@@ -58,4 +58,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  .container {
+    @apply px-6 md:px-10;
+  }
 }
