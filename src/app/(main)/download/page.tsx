@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Windows } from "lucide-react";
+import { Monitor } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -17,7 +17,7 @@ export default function DownloadPage() {
         <Card className="overflow-hidden">
           <CardHeader className="bg-muted p-6">
             <div className="flex items-center gap-4">
-              <Windows className="h-12 w-12 text-primary" />
+              <Monitor className="h-12 w-12 text-primary" />
               <div>
                 <CardTitle className="text-3xl font-bold">Desk Assistant AI for Windows</CardTitle>
                 <CardDescription className="text-lg">Coming Soon</CardDescription>
