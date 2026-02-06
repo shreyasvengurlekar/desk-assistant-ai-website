@@ -1,7 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect } from 'react';
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
 import { joinWaitlist, type WaitlistState } from '@/lib/actions/waitlist';
 import { useToast } from '@/hooks/use-toast';
@@ -21,7 +21,7 @@ function SubmitButton() {
 
 export function WaitlistForm({ className }: { className?: string }) {
   const initialState: WaitlistState = { message: null, errors: {}, success: false };
-  const [state, dispatch] = useFormState(joinWaitlist, initialState);
+  const [state, dispatch] = useActionState(joinWaitlist, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
