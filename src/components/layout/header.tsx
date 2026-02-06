@@ -60,7 +60,7 @@ export function Header() {
         <div className="flex flex-1 items-center justify-end gap-2">
           <ThemeToggle />
           <Button asChild className="hidden md:inline-flex" size="sm">
-            <Link href="/download">Download (Coming Soon)</Link>
+            <Link href="/download">Download</Link>
           </Button>
 
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -91,7 +91,7 @@ export function Header() {
                 ))}
               </div>
               <Button asChild className="w-full" size="sm">
-                <Link href="/download" onClick={closeMobileMenu}>Download (Coming Soon)</Link>
+                <Link href="/download" onClick={closeMobileMenu}>Download</Link>
               </Button>
             </SheetContent>
           </Sheet>

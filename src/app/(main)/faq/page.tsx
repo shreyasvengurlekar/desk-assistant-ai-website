@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "1) Is it available now?",
-    answer: "Not yet. Desk Assistant AI is currently in development. You can join our waitlist on the Download page to be notified as soon as the first version is released.",
+    answer: "Yes! You can download Desk Assistant AI for Windows now from our Download page. The free version is fully functional, and you can unlock Pro features with a one-time purchase from within the app.",
   },
   {
     question: "2) Is it Windows-only?",

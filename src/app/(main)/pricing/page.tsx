@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { Check, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
 import {
@@ -35,19 +34,19 @@ const featureComparison = [
 const faqItems = [
     {
         question: "Is there a free trial for the Pro plan?",
-        answer: "The app itself is free to use with a generous set of features. The Pro features will be available as a one-time in-app purchase. There won't be a separate trial, but the free version gives you a great sense of how the app works."
+        answer: "The app itself is free to use with a generous set of features. The Pro features are available as a one-time in-app purchase. There isn't a separate trial, but the free version gives you a great sense of how the app works."
     },
     {
         question: "What kind of payment is the Pro plan?",
-        answer: "We are planning for the Pro plan to be a one-time purchase, not a recurring subscription. We believe in paying for a product and owning it."
+        answer: "The Pro plan is a one-time purchase, not a recurring subscription. We believe in paying for a product and owning it."
     },
     {
         question: "Can I use one Pro license on multiple computers?",
-        answer: "This is still being decided, but we are aiming to offer a fair policy, such as allowing use on 2-3 personal devices with a single purchase."
+        answer: "Yes, a single Pro license can be used on up to 3 of your personal Windows devices."
     },
     {
         question: "Will the price change?",
-        answer: "The pricing is not final and may evolve as we get closer to launch. Early supporters on our waitlist may receive special introductory pricing."
+        answer: "Pricing is subject to change, but any future price adjustments will not affect existing Pro users who have already made a purchase."
     }
 ];
 
@@ -82,11 +81,8 @@ export default function PricingPage() {
                             <p className="text-muted-foreground text-sm mt-1">$0</p>
                         </TableHead>
                         <TableHead className="w-[30%] text-center">
-                            <div className="flex items-center justify-center gap-2">
-                                <p className="text-2xl font-bold">Pro</p>
-                                <Badge>Coming Soon</Badge>
-                            </div>
-                            <p className="text-muted-foreground text-sm mt-1">One-time purchase</p>
+                            <p className="text-2xl font-bold">Pro</p>
+                            <p className="text-muted-foreground text-sm mt-1">$29.99 one-time</p>
                         </TableHead>
                     </TableRow>
                 </TableHeader>
@@ -107,7 +103,7 @@ export default function PricingPage() {
                         </TableCell>
                         <TableCell className="text-center p-4">
                             <Button asChild className="w-full max-w-xs">
-                                <Link href="/download#join-waitlist">Join Waitlist</Link>
+                                <Link href="/download">Download & Upgrade in App</Link>
                             </Button>
                         </TableCell>
                     </TableRow>
@@ -115,7 +111,7 @@ export default function PricingPage() {
             </Table>
         </Card>
       </div>
-      <p className="mt-8 text-center text-sm text-muted-foreground">*Pricing and features are subject to change during development.</p>
+      <p className="mt-8 text-center text-sm text-muted-foreground">*Price is indicative and subject to change.</p>
 
       <div className="mt-20 max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 font-headline">Frequently Asked Pricing Questions</h2>

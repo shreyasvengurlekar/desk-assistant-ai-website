@@ -21,7 +21,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { WaitlistForm } from '@/components/waitlist-form';
 
 const appScreenshot = PlaceHolderImages.find(p => p.id === 'app-screenshot');
 
@@ -36,7 +35,6 @@ export default function HomePage() {
       <PrivacySection />
       <DemoSection />
       <PricingPreviewSection />
-      <WaitlistCtaSection />
     </div>
   );
 }
@@ -56,10 +54,7 @@ function HeroSection() {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/download">Download (Coming Soon)</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="#join-waitlist">Join Waitlist</Link>
+            <Link href="/download">Download for Windows</Link>
           </Button>
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
@@ -82,7 +77,6 @@ function HeroSection() {
                 priority
               />
             )}
-            <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm text-muted-foreground">Work-in-progress preview</p>
           </div>
         </div>
       </div>
@@ -292,7 +286,7 @@ function DemoSection() {
     <section className="bg-muted py-20 md:py-28">
       <div className="container px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">See It In Action (Preview)</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">See It In Action</h2>
           <p className="mt-4 text-lg text-muted-foreground">A glimpse into the clean and intuitive interface.</p>
         </div>
         <div className="mt-12 relative max-w-5xl mx-auto">
@@ -350,11 +344,11 @@ function PricingPreviewSection() {
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle>Pro</CardTitle>
-                <Badge>In-app purchase</Badge>
+                <Badge>One-time purchase</Badge>
               </div>
             </CardHeader>
             <CardContent className="flex-grow space-y-4">
-              <p className="text-4xl font-bold">Coming Soon</p>
+              <p className="text-4xl font-bold">$29.99</p>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Advanced rules & automation</li>
                 <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Deep scan & smarter grouping</li>
@@ -365,30 +359,12 @@ function PricingPreviewSection() {
           </Card>
         </div>
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          *Pro features may evolve during development.
+          *Price is indicative and subject to change.
         </p>
         <div className="text-center mt-8">
             <Button asChild variant="outline">
                 <Link href="/pricing">View full pricing details <ChevronRight className="w-4 h-4 ml-2" /></Link>
             </Button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WaitlistCtaSection() {
-  return (
-    <section id="join-waitlist" className="bg-muted py-20 md:py-28">
-      <div className="container px-4">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Get Early Access Updates</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            The app is currently in development. Join the waitlist to get notified when the first build is ready and receive exclusive updates.
-          </p>
-        </div>
-        <div className="mt-8 mx-auto max-w-xl">
-          <WaitlistForm />
         </div>
       </div>
     </section>
