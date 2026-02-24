@@ -3,13 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
-import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { NAV_LINKS } from '@/lib/constants';
 
 export function Header() {
@@ -48,8 +47,8 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                'transition-colors hover:text-foreground/80',
-                pathname === link.href ? 'text-foreground' : 'text-foreground/60'
+                'transition-colors hover:text-foreground/80 font-medium',
+                pathname === link.href ? 'text-primary' : 'text-foreground/60'
               )}
             >
               {link.label}
@@ -58,7 +57,6 @@ export function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          {/* <ThemeToggle /> */}
           <Button asChild className="hidden md:inline-flex" size="sm">
             <Link href="/download">Download</Link>
           </Button>
@@ -72,7 +70,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
               <SheetHeader>
-                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetTitle className="sr-only">Main Navigation Menu</SheetTitle>
               </SheetHeader>
               <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                 <Logo />
@@ -86,7 +84,7 @@ export function Header() {
                     onClick={closeMobileMenu}
                     className={cn(
                       'px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-muted',
-                      pathname === link.href ? 'bg-muted text-foreground' : 'text-muted-foreground'
+                      pathname === link.href ? 'bg-muted text-primary' : 'text-muted-foreground'
                     )}
                   >
                     {link.label}
