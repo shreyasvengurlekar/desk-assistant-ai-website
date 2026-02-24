@@ -70,7 +70,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
               <SheetHeader>
-                <SheetTitle className="sr-only">Main Navigation Menu</SheetTitle>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               </SheetHeader>
               <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                 <Logo />
