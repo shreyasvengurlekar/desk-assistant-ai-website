@@ -129,7 +129,6 @@ function SolutionSection() {
     );
 }
 
-
 const coreFeatures = [
   { icon: BrainCircuit, title: "Local File Understanding", description: "AI processes files on your PC, ensuring total privacy." },
   { icon: ShieldCheck, title: "Safe Suggestions", description: "No changes are made without your explicit approval." },
@@ -268,7 +267,7 @@ function PrivacySection() {
           </Card>
         </div>
         <div className="mt-8 text-center text-sm text-muted-foreground">
-          AI is used to organize, not to spy. Processing happens locally on your machine by default.
+          AI is used to organize, not to spy. Processing happens locally on your machine.
         </div>
       </div>
     </section>

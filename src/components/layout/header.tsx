@@ -91,8 +91,8 @@ export function Header() {
                   </Link>
                 ))}
               </div>
-              <Button asChild className="w-full" size="sm">
-                <Link href="/download" onClick={closeMobileMenu}>Download</Link>
+              <Button asChild className="w-full" size="sm" onClick={closeMobileMenu}>
+                <Link href="/download">Download</Link>
               </Button>
             </SheetContent>
           </Sheet>
