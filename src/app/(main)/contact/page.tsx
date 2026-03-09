@@ -38,7 +38,7 @@ export default function ContactPage() {
             </Card>
             <div className="rounded-2xl bg-primary/5 p-8 border border-primary/10">
               <h3 className="font-bold text-lg mb-2">Our Support Hours</h3>
-              <p className="text-sm text-muted-foreground">Monday — Friday: 9am - 5pm EST</p>
+              <p className="text-sm text-muted-foreground">Monday — Friday: 9am - 5pm IST</p>
               <p className="text-sm text-muted-foreground mt-1">We aim to respond to all inquiries as quickly as possible.</p>
             </div>
         </div>
