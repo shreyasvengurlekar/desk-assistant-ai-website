@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
 
@@ -26,26 +26,21 @@ export default function ContactPage() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Mail className="w-6 h-6 text-primary" />
-                        <span>Email (Primary)</span>
+                        <span>Email Support</span>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-muted-foreground">For support, press, or general inquiries, please email us.</p>
-                    <a href="mailto:contact@desk-assistant-ai.com" className="text-lg font-semibold text-primary break-all">contact@desk-assistant-ai.com</a>
+                    <p className="text-muted-foreground">For support, press, or general inquiries, please email our team directly. We typically respond within 24 hours.</p>
+                    <div className="mt-4">
+                      <a href="mailto:contact@desk-assistant-ai.com" className="text-lg font-semibold text-primary break-all">contact@desk-assistant-ai.com</a>
+                    </div>
                 </CardContent>
             </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <MessageCircle className="w-6 h-6 text-primary" />
-                        <span>WhatsApp (Optional)</span>
-                    </CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground">For quick, informal chats, you can reach us on WhatsApp. Please use email for official support requests.</p>
-                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary">+1 (234) 567-890</a>
-                </CardContent>
-            </Card>
+            <div className="rounded-2xl bg-primary/5 p-8 border border-primary/10">
+              <h3 className="font-bold text-lg mb-2">Our Support Hours</h3>
+              <p className="text-sm text-muted-foreground">Monday — Friday: 9am - 5pm EST</p>
+              <p className="text-sm text-muted-foreground mt-1">We aim to respond to all inquiries as quickly as possible.</p>
+            </div>
         </div>
         <div>
           <Card>
