@@ -13,13 +13,11 @@ import {
   Undo,
   Monitor,
   UploadCloud,
-  ChevronRight,
   XCircle,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const appScreenshot = PlaceHolderImages.find(p => p.id === 'app-screenshot');
@@ -34,7 +32,6 @@ export default function HomePage() {
       <HowItWorksSection />
       <PrivacySection />
       <DemoSection />
-      <PricingPreviewSection />
     </div>
   );
 }
@@ -173,12 +170,12 @@ function CoreFeaturesSection() {
 }
 
 const howItWorksSteps = [
-  "Install Desk Assistant AI on your Windows PC.",
-  "Choose folders you want to manage, like Downloads or Desktop.",
-  "The app scans files locally on your machine—nothing is uploaded.",
-  "AI suggests new folder structures, file renames, and groups.",
-  "Review the suggestions and approve the changes you want.",
-  "All actions are logged, and you can undo any change instantly."
+  { title: "Install", description: "Install Desk Assistant AI on your Windows PC." },
+  { title: "Select Folders", description: "Choose folders you want to manage, like Downloads or Desktop." },
+  { title: "Local Scan", description: "The app scans files locally on your machine—nothing is uploaded." },
+  { title: "AI Suggestions", description: "AI suggests new folder structures, file renames, and groups." },
+  { title: "Approve Changes", description: "Review the suggestions and approve the changes you want." },
+  { title: "Activity Log", description: "All actions are logged, and you can undo any change instantly." }
 ];
 
 function HowItWorksSection() {
@@ -191,7 +188,7 @@ function HowItWorksSection() {
             A simple, transparent process that puts you in control.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           {howItWorksSteps.map((step, index) => (
             <div key={index} className="flex flex-col gap-4 p-6 bg-background rounded-xl shadow-sm border border-border/50 transition-all hover:shadow-md">
               <div className="flex items-center justify-between">
@@ -200,7 +197,8 @@ function HowItWorksSection() {
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Step {index + 1}</span>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{step}</p>
+              <h3 className="text-lg font-bold">{step.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{step.description}</p>
             </div>
           ))}
         </div>
@@ -297,61 +295,6 @@ function DemoSection() {
                 </div>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PricingPreviewSection() {
-  return (
-    <section className="py-20 md:py-28">
-      <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Simple, Fair Pricing</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Get started for free, and unlock powerful features when you're ready.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-          <Card className="flex flex-col">
-            <CardHeader>
-              <CardTitle>Free</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow space-y-4">
-              <p className="text-4xl font-bold">$0</p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Suggestions & safe mode</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Basic organization previews</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Activity log</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="border-primary flex flex-col">
-            <CardHeader>
-              <div className="flex justify-between items-center">
-                <CardTitle>Pro</CardTitle>
-                <Badge>One-time purchase</Badge>
-              </div>
-            </CardHeader>
-            <CardContent className="flex-grow space-y-4">
-              <p className="text-4xl font-bold">$29.99</p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Advanced rules & automation</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Deep scan & smarter grouping</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Duplicate cleanup suggestions</li>
-                <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Priority updates</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          *Price is indicative and subject to change.
-        </p>
-        <div className="text-center mt-8">
-            <Button asChild variant="outline">
-                <Link href="/pricing">View full pricing details <ChevronRight className="w-4 h-4 ml-2" /></Link>
-            </Button>
         </div>
       </div>
     </section>

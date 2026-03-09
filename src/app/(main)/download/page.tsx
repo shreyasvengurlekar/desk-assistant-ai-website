@@ -57,7 +57,7 @@ export default function DownloadPage() {
                 <ul className="mt-2 space-y-1 text-muted-foreground list-disc list-inside text-sm">
                     <li>Initial public release.</li>
                     <li>All core features enabled.</li>
-                    <li>Free and Pro plans available.</li>
+                    <li>Completely free to download and use.</li>
                 </ul>
               </div>
             </div>

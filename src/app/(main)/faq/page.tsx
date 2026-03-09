@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "1) Is it available now?",
-    answer: "Yes! You can download Desk Assistant AI for Windows now from our Download page. The free version is fully functional, and you can unlock Pro features with a one-time purchase from within the app.",
+    answer: "Yes! You can download Desk Assistant AI for Windows now from our Download page. The version is fully functional and ready to help you organize your files.",
   },
   {
     question: "2) Is it Windows-only?",
@@ -30,26 +30,22 @@ const faqItems = [
   },
   {
     question: "5) Does it work offline?",
-    answer: "Yes. Since all processing is done locally, Desk Assistant AI works perfectly without an internet connection. An internet connection is only needed for initial download, updates and for account verification if you purchase the Pro version.",
+    answer: "Yes. Since all processing is done locally, Desk Assistant AI works perfectly without an internet connection. An internet connection is only needed for initial download and updates.",
   },
   {
     question: "6) Is it free?",
-    answer: "Yes, there will be a free version with powerful features for organizing your files. We believe everyone deserves a tidy digital space. It will be fully functional for most users' needs.",
+    answer: "Yes, Desk Assistant AI is free to download and use for organizing your files. We believe everyone deserves a tidy digital space.",
   },
   {
-    question: "7) What is Pro?",
-    answer: "The Pro version is an optional, one-time in-app purchase that will unlock advanced features for power users, such as custom automation rules, deeper AI analysis, duplicate file cleanup, and more.",
-  },
-  {
-    question: "8) Which folders can it manage?",
+    question: "7) Which folders can it manage?",
     answer: "You can choose any folder on your computer for the assistant to manage. Common choices are the Downloads, Desktop, and Documents folders, but you have full control to add or remove any folder you wish.",
   },
   {
-    question: "9) Can I disable the background mode?",
+    question: "8) Can I disable the background mode?",
     answer: "Yes. While the app is designed to be a lightweight tray assistant, you will have the option to prevent it from starting with Windows or running in the background if you prefer to only run it manually.",
   },
   {
-    question: "10) Is it safe?",
+    question: "9) Is it safe?",
     answer: "Safety is our top priority. The app is 'permission-first', meaning it will never make a change without your approval. Combined with local processing and an undo feature, we've designed it to be as safe as possible.",
   },
 ];
