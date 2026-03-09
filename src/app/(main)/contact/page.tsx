@@ -32,7 +32,7 @@ export default function ContactPage() {
                 <CardContent>
                     <p className="text-muted-foreground">For support, press, or general inquiries, please email our team directly. We typically respond within 24 hours.</p>
                     <div className="mt-4">
-                      <a href="mailto:contact@desk-assistant-ai.com" className="text-lg font-semibold text-primary break-all">contact@desk-assistant-ai.com</a>
+                      <a href="mailto:deskassistantai@gmail.com" className="text-lg font-semibold text-primary break-all">contact@desk-assistant-ai.com</a>
                     </div>
                 </CardContent>
             </Card>
