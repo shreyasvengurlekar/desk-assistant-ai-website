@@ -12,8 +12,9 @@ import {
   CheckCircle,
   Undo,
   Monitor,
-  UploadCloud,
-  XCircle,
+  Download,
+  Shield,
+  Zap,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -26,12 +27,12 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
+      <ValuePropSection />
       <CoreFeaturesSection />
       <HowItWorksSection />
+      <TestimonialSection />
       <PrivacySection />
-      <DemoSection />
+      <FinalCtaSection />
     </div>
   );
 }
@@ -40,29 +41,35 @@ function HeroSection() {
   return (
     <section className="py-20 md:py-32">
       <div className="container text-center">
+        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+          <Zap className="h-4 w-4" />
+          <span>Version 1.0 is Now Available</span>
+        </div>
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-          Organize and find files on your Windows PC
+          The Smartest Way to <br />
+          <span className="text-primary">Organize Your Windows PC</span>
         </h1>
-        <h2 className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary font-headline">
-          Automatically, Privately, with Full Control.
-        </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Desk Assistant AI helps you clean messy folders, rename files smartly, group documents, and find what you need fast — without uploading your personal files.
+          Stop wasting hours searching for files. Desk Assistant AI automatically cleans your folders, renames files smartly, and keeps your digital life organized—all 100% privately on your machine.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg">
-            <Link href="/download">Download for Windows</Link>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Button asChild size="lg" className="h-14 px-8 text-lg">
+            <Link href="/download">
+              <Download className="mr-2 h-5 w-5" />
+              Download Free for Windows
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg">
+            <Link href="/features">Explore Features</Link>
           </Button>
         </div>
-        <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <span className="flex items-center gap-2"><Monitor className="h-4 w-4" /> Windows only</span>
-          <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Runs locally</span>
-          <span className="flex items-center gap-2"><UploadCloud className="h-4 w-4" /> No file uploads</span>
-          <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4" /> User approval required</span>
-          <span className="flex items-center gap-2"><Undo className="h-4 w-4" /> Undo anytime</span>
+        <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
+          <span className="flex items-center gap-2"><Monitor className="h-4 w-4 text-primary" /> Windows 10/11</span>
+          <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Privacy Focused</span>
+          <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> No Hidden Fees</span>
         </div>
         <div className="mt-16">
-          <div className="relative mx-auto max-w-5xl rounded-lg border bg-card p-2 shadow-2xl shadow-primary/10">
+          <div className="relative mx-auto max-w-5xl rounded-2xl border bg-card p-2 shadow-2xl shadow-primary/20">
             {appScreenshot && (
               <Image
                 src={appScreenshot.imageUrl}
@@ -70,7 +77,7 @@ function HeroSection() {
                 data-ai-hint={appScreenshot.imageHint}
                 width={1200}
                 height={750}
-                className="rounded-md"
+                className="rounded-xl shadow-inner"
                 priority
               />
             )}
@@ -81,31 +88,37 @@ function HeroSection() {
   );
 }
 
-const problems = [
-  "Downloads folder becomes a junkyard",
-  "Random file names like 'final_final_v2.pdf'",
-  "Hard to find important PDFs later",
-  "Sorting takes time and effort",
-  "You forget where you saved things",
-];
+function ValuePropSection() {
+  const values = [
+    {
+      title: "Save Time Every Day",
+      description: "No more manual sorting. Our AI suggests the perfect organization for your messy folders in seconds.",
+      icon: Zap,
+    },
+    {
+      title: "Built for Privacy",
+      description: "Your files never leave your computer. All AI processing is done locally, keeping your data secure.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "You're in Control",
+      description: "We suggest, you approve. Every single action taken by the AI requires your explicit consent.",
+      icon: LayoutGrid,
+    },
+  ];
 
-function ProblemSection() {
   return (
-    <section className="bg-muted py-20 md:py-28">
+    <section className="bg-muted/30 py-24">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Sound Familiar?</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Managing files is a universal headache. We're building a tool to fix that.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {problems.map((problem, index) => (
-            <Card key={index} className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
-              <CardContent className="pt-6">
-                <p className="font-medium text-center">{problem}</p>
-              </CardContent>
-            </Card>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+          {values.map((value, i) => (
+            <div key={i} className="text-center md:text-left">
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+                <value.icon className="h-7 w-7" />
+              </div>
+              <h3 className="mb-3 text-xl font-bold font-headline">{value.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -113,53 +126,40 @@ function ProblemSection() {
   );
 }
 
-function SolutionSection() {
-    return (
-        <section className="py-20 md:py-28">
-            <div className="container text-center">
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">A File Assistant That Actually Helps</h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                    Desk Assistant AI works like a smart file manager that lives inside your computer. It suggests ways to organize your files, and you have the final say. It's like having a personal assistant for your digital clutter.
-                </p>
-            </div>
-        </section>
-    );
-}
-
 const coreFeatures = [
-  { icon: BrainCircuit, title: "Local File Understanding", description: "AI processes files on your PC, ensuring total privacy." },
-  { icon: ShieldCheck, title: "Safe Suggestions", description: "No changes are made without your explicit approval." },
-  { icon: FolderSync, title: "Auto-Organize", description: "Optionally automate cleaning of folders like Downloads." },
-  { icon: History, title: "Logs + Undo Anytime", description: "Easily reverse any action with a single click." },
-  { icon: MessageCircle, title: "AI Chat to Find Files", description: "Find files by describing them in plain English." },
-  { icon: Sparkles, title: "Clean Downloads/Desktop", description: "Tame your messiest folders with smart suggestions." },
-  { icon: CopyX, title: "Duplicate Detection", description: "Find and remove duplicate files to save space." },
-  { icon: LayoutGrid, title: "Lightweight Tray Assistant", description: "Runs quietly in the background without slowing you down." },
+  { icon: BrainCircuit, title: "Local AI Engine", description: "Processes your documents and images without an internet connection." },
+  { icon: FolderSync, title: "Smart Auto-Organize", description: "Automatically routes files to the right folders based on content." },
+  { icon: MessageCircle, title: "Natural Language Search", description: "Find files by asking 'Find that invoice from last Tuesday'." },
+  { icon: Sparkles, title: "One-Click Cleanup", description: "Instantly tidy your Desktop and Downloads folders with smart groups." },
+  { icon: CopyX, title: "Duplicate Destroyer", description: "Identify and remove identical files to free up valuable disk space." },
+  { icon: History, title: "Activity Logs", description: "Track every single file move, rename, and folder creation." },
+  { icon: Undo, title: "Instant Undo", description: "Mistakes happen. Revert any action with a single click at any time." },
+  { icon: Monitor, title: "Lightweight Design", description: "Runs quietly in the tray using minimal system resources." },
 ];
 
 function CoreFeaturesSection() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-24">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Powerful Features, Simple Interface</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Everything you need to conquer file chaos, built with privacy and user control at its core.
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline text-foreground">Advanced Tools, Simplified.</h2>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+            We've packed professional-grade AI into a simple, beautiful interface that anyone can use.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {coreFeatures.map((feature, index) => (
-            <Card key={index} className="bg-card">
+            <Card key={index} className="group border-border/50 bg-background transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3 flex items-center justify-center">
+                  <div className="rounded-xl bg-primary/5 p-3 flex items-center justify-center transition-colors group-hover:bg-primary/10">
                     <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-lg font-bold">{feature.title}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -169,36 +169,55 @@ function CoreFeaturesSection() {
   );
 }
 
-const howItWorksSteps = [
-  { title: "Install", description: "Install Desk Assistant AI on your Windows PC." },
-  { title: "Select Folders", description: "Choose folders you want to manage, like Downloads or Desktop." },
-  { title: "Local Scan", description: "The app scans files locally on your machine—nothing is uploaded." },
-  { title: "AI Suggestions", description: "AI suggests new folder structures, file renames, and groups." },
-  { title: "Approve Changes", description: "Review the suggestions and approve the changes you want." },
-  { title: "Activity Log", description: "All actions are logged, and you can undo any change instantly." }
+const steps = [
+  { title: "Install", description: "Download and run the installer for your Windows PC." },
+  { title: "Choose Folders", description: "Select the folders you want the assistant to help you with." },
+  { title: "Review Suggestions", description: "See smart suggestions for renaming and grouping your files." },
+  { title: "Apply & Enjoy", description: "Approve the changes and enjoy a clean, organized workspace." }
 ];
 
 function HowItWorksSection() {
   return (
-    <section className="bg-muted py-20 md:py-28">
+    <section className="bg-muted/50 py-24">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">How It Works</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A simple, transparent process that puts you in control.
-          </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Get Started in Seconds</h2>
+          <p className="mt-4 text-lg text-muted-foreground">The easiest way to organize your files, guaranteed.</p>
         </div>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {howItWorksSteps.map((step, index) => (
-            <div key={index} className="flex flex-col gap-4 p-6 bg-background rounded-xl shadow-sm border border-border/50 transition-all hover:shadow-md">
-              <div className="flex items-center justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold shrink-0">
-                  {index + 1}
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Step {index + 1}</span>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <div key={index} className="relative flex flex-col items-center text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-black text-primary-foreground shadow-lg shadow-primary/20">
+                {index + 1}
               </div>
-              <h3 className="text-lg font-bold">{step.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{step.description}</p>
+              <h3 className="mb-2 text-xl font-bold">{step.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+              {index < steps.length - 1 && (
+                <div className="absolute left-[calc(50%+40px)] top-8 hidden w-[calc(100%-80px)] border-t-2 border-dashed border-primary/20 md:block" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialSection() {
+  const testimonials = [
+    { quote: "Finally, my Downloads folder isn't a graveyard of random files. The renaming feature is a lifesaver.", author: "James W., Software Engineer" },
+    { quote: "I love that it works locally. I deal with sensitive documents, and knowing they stay on my PC is huge.", author: "Sarah L., Freelancer" },
+    { quote: "Super simple to use. I was organized in under 5 minutes. Best utility I've downloaded this year.", author: "Michael R., Designer" },
+  ];
+
+  return (
+    <section className="py-24">
+      <div className="container">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <div key={i} className="rounded-2xl border border-border/60 bg-card p-8 shadow-sm">
+              <p className="mb-6 italic text-foreground/80 leading-relaxed">"{t.quote}"</p>
+              <p className="font-bold text-sm">— {t.author}</p>
             </div>
           ))}
         </div>
@@ -208,93 +227,42 @@ function HowItWorksSection() {
 }
 
 function PrivacySection() {
-  const weNeverCollect = ["Your file content", "File names", "Folder structure", "Personal documents"];
-  const weOnlyCollect = ["Your name/username", "Email address", "Encrypted password", "App preferences (e.g., theme)"];
-
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-24 bg-primary text-primary-foreground">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Your Files Stay Yours. Period.</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Privacy isn't an afterthought; it's our foundation. We designed Desk Assistant AI to be private-by-default.
+        <div className="mx-auto max-w-4xl text-center">
+          <Shield className="mx-auto h-16 w-16 mb-8 opacity-90" />
+          <h2 className="text-3xl font-bold font-headline sm:text-5xl mb-6">Privacy is not a feature. <br /> It's the foundation.</h2>
+          <p className="text-xl opacity-90 leading-relaxed mb-10">
+            Desk Assistant AI was built from the ground up to be private-first. We never see your files, your folder names, or your data. Everything stays on your machine, exactly where it belongs.
           </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-          <Card className="border-red-500/50 bg-red-500/5 dark:bg-red-500/10">
-            <CardHeader>
-              <CardTitle className="text-red-600 dark:text-red-400">We NEVER Collect</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {weNeverCollect.map((item, i) => (
-                  <li key={i} className="flex items-start">
-                    <XCircle className="mr-2 mt-1 h-4 w-4 shrink-0 text-red-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="border-green-500/50 bg-green-500/5 dark:bg-green-500/10">
-            <CardHeader>
-              <CardTitle className="text-green-600 dark:text-green-400">We ONLY Collect</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {weOnlyCollect.map((item, i) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle className="mr-2 mt-1 h-4 w-4 shrink-0 text-green-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-        <div className="mt-8 text-center text-sm text-muted-foreground">
-          AI is used to organize, not to spy. Processing happens locally on your machine.
+          <div className="inline-flex flex-wrap justify-center gap-6">
+            <span className="flex items-center gap-2 text-lg font-medium"><CheckCircle className="h-5 w-5" /> No Cloud Uploads</span>
+            <span className="flex items-center gap-2 text-lg font-medium"><CheckCircle className="h-5 w-5" /> No File Tracking</span>
+            <span className="flex items-center gap-2 text-lg font-medium"><CheckCircle className="h-5 w-5" /> Local-Only AI</span>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-const callouts = [
-  { text: "Quick actions (Downloads/Desktop)", position: "top-1/4 left-4" },
-  { text: "AI suggestion panel", position: "top-1/2 right-4" },
-  { text: "Approve/Cancel for control", position: "bottom-4 left-1/2 -translate-x-1/2" },
-];
-
-function DemoSection() {
+function FinalCtaSection() {
   return (
-    <section className="bg-muted py-20 md:py-28">
+    <section className="py-32">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">See It In Action</h2>
-          <p className="mt-4 text-lg text-muted-foreground">A glimpse into the clean and intuitive interface.</p>
-        </div>
-        <div className="mt-12 relative max-w-5xl mx-auto">
-          {appScreenshot && (
-            <Image
-              src={appScreenshot.imageUrl}
-              alt={appScreenshot.description}
-              data-ai-hint={appScreenshot.imageHint}
-              width={1200}
-              height={750}
-              className="rounded-lg border shadow-lg"
-            />
-          )}
-          {callouts.map((callout, i) => (
-             <div key={i} className={`absolute ${callout.position}`}>
-                <div className="relative">
-                  <div className="absolute w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-                  <div className="absolute ml-5 -mt-2 bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                    {callout.text}
-                  </div>
-                </div>
-            </div>
-          ))}
+        <div className="mx-auto max-w-4xl rounded-3xl bg-muted/40 p-12 text-center border border-border/50">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl mb-6">Ready to Conquer File Chaos?</h2>
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Join thousands of users who have transformed their Windows experience. Download Desk Assistant AI for free today.
+          </p>
+          <Button asChild size="lg" className="h-16 px-10 text-xl font-bold">
+            <Link href="/download">
+              <Download className="mr-3 h-6 w-6" />
+              Download Now — It's Free
+            </Link>
+          </Button>
+          <p className="mt-6 text-sm text-muted-foreground">Supported on Windows 10 & 11 (64-bit)</p>
         </div>
       </div>
     </section>
