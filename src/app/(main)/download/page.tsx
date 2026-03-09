@@ -27,6 +27,7 @@ export default async function DownloadPage() {
   
   let whatsNew = release?.body || "General improvements and performance optimizations.";
   
+  // Convert technical GitHub changelog URLs into user-friendly text
   whatsNew = whatsNew.replace(
     /(?:\*\*|)?Full Changelog(?:\*\*|)?:\s*(https:\/\/github\.com\/[^\s]+)/gi, 
     '[View full version details on GitHub]($1)'
