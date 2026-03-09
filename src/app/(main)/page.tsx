@@ -20,30 +20,35 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { getLatestRelease } from '@/lib/github';
 
 const appScreenshot = PlaceHolderImages.find(p => p.id === 'app-screenshot');
 
-export default function HomePage() {
+export default async function HomePage() {
+  const release = await getLatestRelease();
+  const downloadUrl = release?.downloadUrl || "/download";
+  const version = release?.version || "v1.0.0";
+
   return (
     <div className="flex flex-col">
-      <HeroSection />
+      <HeroSection downloadUrl={downloadUrl} version={version} />
       <ValuePropSection />
       <CoreFeaturesSection />
       <HowItWorksSection />
       <TestimonialSection />
       <PrivacySection />
-      <FinalCtaSection />
+      <FinalCtaSection downloadUrl={downloadUrl} />
     </div>
   );
 }
 
-function HeroSection() {
+function HeroSection({ downloadUrl, version }: { downloadUrl: string, version: string }) {
   return (
     <section className="py-20 md:py-32">
       <div className="container text-center">
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary animate-in fade-in slide-in-from-top-4 duration-1000">
           <Zap className="h-4 w-4" />
-          <span>Version 1.0 is Now Available</span>
+          <span>Latest Release: {version}</span>
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
           The Smartest Way to <br />
@@ -53,8 +58,8 @@ function HeroSection() {
           Stop wasting hours searching for files. Desk Assistant AI automatically cleans your folders, renames files smartly, and keeps your digital life organized—all 100% privately on your machine.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg" className="h-14 px-8 text-lg">
-            <Link href="/download">
+          <Button asChild size="lg" className="h-14 px-8 text-lg font-bold shadow-xl hover:shadow-primary/20 transition-all">
+            <Link href={downloadUrl}>
               <Download className="mr-2 h-5 w-5" />
               Download Free for Windows
             </Link>
@@ -65,7 +70,7 @@ function HeroSection() {
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
           <span className="flex items-center gap-2"><Monitor className="h-4 w-4 text-primary" /> Windows 10/11</span>
-          <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Privacy Focused</span>
+          <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> 100% Private</span>
           <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> No Hidden Fees</span>
         </div>
         <div className="mt-16">
@@ -247,7 +252,7 @@ function PrivacySection() {
   );
 }
 
-function FinalCtaSection() {
+function FinalCtaSection({ downloadUrl }: { downloadUrl: string }) {
   return (
     <section className="py-32">
       <div className="container">
@@ -256,8 +261,8 @@ function FinalCtaSection() {
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Join thousands of users who have transformed their Windows experience. Download Desk Assistant AI for free today.
           </p>
-          <Button asChild size="lg" className="h-16 px-10 text-xl font-bold">
-            <Link href="/download">
+          <Button asChild size="lg" className="h-16 px-10 text-xl font-bold shadow-lg hover:shadow-primary/20 transition-all">
+            <Link href={downloadUrl}>
               <Download className="mr-3 h-6 w-6" />
               Download Now — It's Free
             </Link>

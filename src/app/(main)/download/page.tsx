@@ -2,22 +2,30 @@ import { Metadata } from "next";
 import { Monitor, DownloadCloud, CheckCircle, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getLatestRelease } from "@/lib/github";
 
 export const metadata: Metadata = {
   title: "Download",
-  description: "Download Desk Assistant AI for Windows to start organizing your files instantly.",
+  description: "Download the latest version of Desk Assistant AI for Windows to start organizing your files instantly.",
 };
 
-export default function DownloadPage() {
+export default async function DownloadPage() {
+  const release = await getLatestRelease();
+  
+  const version = release?.version || "v1.0.0";
+  const size = release?.size || "50.2 MB";
+  const downloadUrl = release?.downloadUrl || "#";
+  const whatsNew = release?.body || "General improvements and performance optimizations.";
+
   return (
     <div className="container py-12 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl font-headline mb-4">Get Started for Free</h1>
-          <p className="text-xl text-muted-foreground">Download the latest version of Desk Assistant AI for Windows.</p>
+          <p className="text-xl text-muted-foreground">Download Desk Assistant AI for your Windows PC.</p>
         </div>
 
         <Card className="overflow-hidden shadow-2xl border-primary/10">
@@ -28,16 +36,16 @@ export default function DownloadPage() {
               </div>
               <div className="text-center md:text-left flex-1">
                 <CardTitle className="text-3xl font-bold mb-2">Desk Assistant AI for Windows</CardTitle>
-                <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-muted-foreground">
-                  <span>Version 1.0.0 (Stable)</span>
+                <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-muted-foreground font-medium">
+                  <span className="bg-primary/10 text-primary px-2 py-0.5 rounded">Version {version}</span>
                   <span>•</span>
-                  <span>Size: 50.2 MB</span>
+                  <span>Size: {size}</span>
                   <span>•</span>
-                  <span>MD5: 7a8b9c...</span>
+                  <span>Windows 10/11</span>
                 </div>
               </div>
-              <Button asChild size="lg" className="h-16 px-10 text-xl font-bold w-full md:w-auto">
-                <Link href="#">
+              <Button asChild size="lg" className="h-16 px-10 text-xl font-bold w-full md:w-auto shadow-lg hover:shadow-primary/30 transition-all">
+                <Link href={downloadUrl}>
                   <DownloadCloud className="mr-3 h-6 w-6" />
                   Download Now
                 </Link>
@@ -47,19 +55,25 @@ export default function DownloadPage() {
           <CardContent className="p-8 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center gap-3">
-                <CheckCircle className="h-8 w-8 text-primary" />
+                <div className="p-3 bg-primary/10 rounded-full">
+                  <CheckCircle className="h-6 w-6 text-primary" />
+                </div>
                 <h3 className="font-bold">Simple Install</h3>
-                <p className="text-sm text-muted-foreground">Easy setup process gets you running in under 60 seconds.</p>
+                <p className="text-sm text-muted-foreground">One-click setup process gets you running in under 60 seconds.</p>
               </div>
               <div className="flex flex-col items-center text-center gap-3">
-                <ShieldCheck className="h-8 w-8 text-primary" />
+                <div className="p-3 bg-primary/10 rounded-full">
+                  <ShieldCheck className="h-6 w-6 text-primary" />
+                </div>
                 <h3 className="font-bold">100% Private</h3>
-                <p className="text-sm text-muted-foreground">Your files stay on your PC. No data collection, ever.</p>
+                <p className="text-sm text-muted-foreground">Local-only processing. Your files never leave your computer.</p>
               </div>
               <div className="flex flex-col items-center text-center gap-3">
-                <Zap className="h-8 w-8 text-primary" />
+                <div className="p-3 bg-primary/10 rounded-full">
+                  <Zap className="h-6 w-6 text-primary" />
+                </div>
                 <h3 className="font-bold">Lightning Fast</h3>
-                <p className="text-sm text-muted-foreground">Optimized for low RAM and CPU usage in the background.</p>
+                <p className="text-sm text-muted-foreground">Low memory footprint for smooth background operation.</p>
               </div>
             </div>
 
@@ -67,36 +81,31 @@ export default function DownloadPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-xl font-bold mb-4">System Requirements</h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
+                <h3 className="text-xl font-bold mb-6">System Requirements</h3>
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                    <span><strong>OS:</strong> Windows 10 or Windows 11 (64-bit required)</span>
+                    <span><strong>OS:</strong> Windows 10 or Windows 11 (64-bit)</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                    <span><strong>Processor:</strong> Intel Core i3 or equivalent (minimum)</span>
+                    <span><strong>Processor:</strong> Intel Core i3 or equivalent</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                     <span><strong>RAM:</strong> 4GB (minimum)</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                    <span><strong>Disk Space:</strong> 200MB free space for installation</span>
+                    <span><strong>Storage:</strong> 200MB free space</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">What's New in v1.0</h3>
-                <div className="space-y-4">
-                  <div className="rounded-lg bg-muted/50 p-4">
-                    <p className="font-semibold text-sm mb-1">Initial Release</p>
-                    <p className="text-sm text-muted-foreground">Full suite of AI organization tools, local file indexing, and natural language search support.</p>
-                  </div>
-                  <div className="rounded-lg bg-muted/50 p-4">
-                    <p className="font-semibold text-sm mb-1">Performance Patch</p>
-                    <p className="text-sm text-muted-foreground">Reduced idle memory usage by 40% for smoother background operation.</p>
+                <h3 className="text-xl font-bold mb-6">What's New in {version}</h3>
+                <div className="rounded-xl bg-muted/50 p-6 border border-border/50">
+                  <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap text-muted-foreground leading-relaxed">
+                    {whatsNew}
                   </div>
                 </div>
               </div>
@@ -105,7 +114,7 @@ export default function DownloadPage() {
         </Card>
         
         <div className="mt-12 text-center">
-          <p className="text-muted-foreground">Looking for help with installation? <Link href="/contact" className="text-primary hover:underline">Contact Support</Link></p>
+          <p className="text-muted-foreground">Having trouble with the installation? <Link href="/contact" className="text-primary font-semibold hover:underline">Contact Support</Link></p>
         </div>
       </div>
     </div>
