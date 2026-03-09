@@ -72,7 +72,8 @@ function HeroSection({ version }: { version: string }) {
           <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> 100% Private</span>
           <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> No Hidden Fees</span>
         </div>
-        <div className="mt-12 md:mt-16">
+        {/* Increased margin here to push the image down on laptop/desktop views */}
+        <div className="mt-24 md:mt-64">
           <div className="relative mx-auto max-w-5xl rounded-2xl border bg-card p-1 md:p-2 shadow-2xl shadow-primary/20 overflow-hidden">
             {appScreenshot && (
               <Image
