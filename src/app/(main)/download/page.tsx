@@ -1,6 +1,8 @@
+
 import { Metadata } from "next";
-import { Monitor, DownloadCloud, CheckCircle, ShieldCheck, Zap } from "lucide-react";
+import { DownloadCloud, CheckCircle, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -8,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { getLatestRelease } from "@/lib/github";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const metadata: Metadata = {
   title: "Download",
@@ -16,15 +19,14 @@ export const metadata: Metadata = {
 
 export default async function DownloadPage() {
   const release = await getLatestRelease();
+  const logoData = PlaceHolderImages.find(p => p.id === 'app-logo');
   
   const version = release?.version || "v1.0.0";
   const size = release?.size || "50.2 MB";
   const downloadUrl = release?.downloadUrl || "#";
   
-  // Clean up the release body to be more user-friendly for non-technical users
   let whatsNew = release?.body || "General improvements and performance optimizations.";
   
-  // Replace technical "Full Changelog" pattern with a more readable link
   whatsNew = whatsNew.replace(
     /(?:\*\*|)?Full Changelog(?:\*\*|)?:\s*(https:\/\/github\.com\/[^\s]+)/gi, 
     '[View full version details on GitHub]($1)'
@@ -41,8 +43,16 @@ export default async function DownloadPage() {
         <Card className="overflow-hidden shadow-2xl border-primary/10">
           <CardHeader className="bg-primary/5 p-6 md:p-12">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-              <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xl shadow-primary/20">
-                <Monitor className="h-8 w-8 md:h-10 md:w-10" />
+              <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-primary shadow-xl shadow-primary/20 overflow-hidden">
+                {logoData ? (
+                  <Image 
+                    src={logoData.imageUrl} 
+                    alt="Desk Assistant AI Logo" 
+                    width={80} 
+                    height={80} 
+                    className="object-contain p-2"
+                  />
+                ) : null}
               </div>
               <div className="text-center md:text-left flex-1">
                 <CardTitle className="text-2xl md:text-3xl font-bold mb-2">Desk Assistant AI for Windows</CardTitle>
