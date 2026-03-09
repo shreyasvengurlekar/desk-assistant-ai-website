@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NAV_LINKS } from "@/lib/constants";
@@ -8,8 +9,8 @@ export function Footer() {
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="flex flex-col items-center md:items-start gap-6 md:col-span-2 text-center md:text-left">
-            <Link href="/" className="flex items-center gap-2">
-              <Logo className="h-8 w-8" />
+            <Link href="/" className="flex items-center gap-3">
+              <Logo />
               <span className="text-xl font-bold font-headline">Desk Assistant AI</span>
             </Link>
             <p className="max-w-xs text-sm text-muted-foreground leading-relaxed">

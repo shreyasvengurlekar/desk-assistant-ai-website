@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -36,15 +37,15 @@ export function Header() {
       )}
     >
       <div className="container flex h-16 items-center">
-        {/* Logo Section - Pushed to the left */}
+        {/* Logo Section */}
         <div className="flex flex-1 items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-3">
             <Logo />
-            <span className="hidden font-bold sm:inline-block">Desk Assistant AI</span>
+            <span className="hidden font-bold sm:inline-block tracking-tight">Desk Assistant AI</span>
           </Link>
         </div>
 
-        {/* Navigation - Perfectly centered on desktop */}
+        {/* Navigation */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
           {NAV_LINKS.map((link) => (
             <Link
@@ -60,7 +61,7 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Actions - Pushed to the right */}
+        {/* Actions */}
         <div className="flex flex-1 items-center justify-end gap-2">
           <Button asChild className="hidden md:inline-flex" size="sm">
             <Link href="/download">Download</Link>
@@ -78,7 +79,7 @@ export function Header() {
                 <SheetHeader>
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 </SheetHeader>
-                <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
+                <Link href="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
                   <Logo />
                   <span className="font-bold">Desk Assistant AI</span>
                 </Link>

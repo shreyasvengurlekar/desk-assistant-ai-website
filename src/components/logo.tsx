@@ -9,12 +9,15 @@ export function Logo({ className }: { className?: string }) {
   if (!logoData) return null;
 
   return (
-    <div className={cn("relative flex items-center justify-center", className)}>
+    <div className={cn(
+      "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary shadow-lg shadow-primary/20 overflow-hidden", 
+      className
+    )}>
       <Image
         src={logoData.imageUrl}
         alt={logoData.description}
-        width={32}
-        height={32}
+        width={24}
+        height={24}
         className="object-contain"
         priority
       />
