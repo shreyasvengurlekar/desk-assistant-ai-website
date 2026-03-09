@@ -15,14 +15,15 @@ const REPO_NAME = 'desk-assistant-ai-application';
 
 /**
  * Fetches the latest release data from GitHub.
- * Results are cached for 1 hour using Next.js Incremental Static Regeneration.
+ * Results are cached for 60 seconds using Next.js Incremental Static Regeneration.
+ * This ensures the site feels "live" without hitting GitHub's API rate limits.
  */
 export async function getLatestRelease(): Promise<GitHubRelease | null> {
   try {
     const res = await fetch(
       `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`,
       {
-        next: { revalidate: 3600 }, // Revalidate every hour
+        next: { revalidate: 60 }, // Revalidate every 60 seconds
         headers: {
           'User-Agent': 'Desk-Assistant-AI-Website',
         },
