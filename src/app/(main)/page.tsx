@@ -191,30 +191,18 @@ function HowItWorksSection() {
             A simple, transparent process that puts you in control.
           </p>
         </div>
-        <div className="mt-12">
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 h-full w-px bg-border -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
-            <ul className="space-y-8">
-              {howItWorksSteps.map((step, index) => (
-                <li key={index} className="relative flex items-start md:justify-center md:gap-x-12">
-                  <div className="md:w-1/2 md:text-right">
-                    <div className="md:inline-block md:text-left">
-                      <div className="flex flex-col items-start md:items-end">
-                        <div className="flex items-center gap-4">
-                          <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                            {index + 1}
-                          </div>
-                          <p className="font-medium text-lg md:hidden">{`Step ${index + 1}`}</p>
-                        </div>
-                        <p className="mt-2 ml-14 md:ml-0 md:mt-2 text-muted-foreground">{step}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block w-1/2"></div>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {howItWorksSteps.map((step, index) => (
+            <div key={index} className="flex flex-col gap-4 p-6 bg-background rounded-xl shadow-sm border border-border/50 transition-all hover:shadow-md">
+              <div className="flex items-center justify-between">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold shrink-0">
+                  {index + 1}
+                </div>
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Step {index + 1}</span>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">{step}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
