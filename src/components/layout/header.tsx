@@ -36,13 +36,15 @@ export function Header() {
       )}
     >
       <div className="container flex h-16 items-center">
-        <div className="mr-6 flex items-center">
+        {/* Logo Section - Pushed to the left */}
+        <div className="flex flex-1 items-center">
           <Link href="/" className="flex items-center gap-2">
             <Logo />
             <span className="hidden font-bold sm:inline-block">Desk Assistant AI</span>
           </Link>
         </div>
 
+        {/* Navigation - Perfectly centered on desktop */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
           {NAV_LINKS.map((link) => (
             <Link
@@ -58,6 +60,7 @@ export function Header() {
           ))}
         </nav>
 
+        {/* Actions - Pushed to the right */}
         <div className="flex flex-1 items-center justify-end gap-2">
           <Button asChild className="hidden md:inline-flex" size="sm">
             <Link href="/download">Download</Link>
