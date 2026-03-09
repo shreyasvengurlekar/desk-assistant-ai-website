@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Monitor, DownloadCloud, CheckCircle, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -106,11 +107,14 @@ export default async function DownloadPage() {
               <div>
                 <h3 className="text-xl font-bold mb-6">What's New in {version}</h3>
                 <div className="rounded-xl bg-muted/50 p-6 border border-border/50">
-                  <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
-                    <ReactMarkdown components={{
-                      a: ({node, ...props}) => <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer" />,
-                      p: ({node, ...props}) => <p {...props} className="mb-2 last:mb-0" />
-                    }}>
+                  <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                    <ReactMarkdown 
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        a: ({node, ...props}) => <a {...props} className="text-primary font-medium hover:underline break-all" target="_blank" rel="noopener noreferrer" />,
+                        p: ({node, ...props}) => <p {...props} className="mb-2 last:mb-0" />
+                      }}
+                    >
                       {whatsNew}
                     </ReactMarkdown>
                   </div>
