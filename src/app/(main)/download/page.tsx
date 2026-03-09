@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import { Monitor, DownloadCloud, CheckCircle, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
@@ -21,14 +20,23 @@ export default async function DownloadPage() {
   const version = release?.version || "v1.0.0";
   const size = release?.size || "50.2 MB";
   const downloadUrl = release?.downloadUrl || "#";
-  const whatsNew = release?.body || "General improvements and performance optimizations.";
+  
+  // Clean up the release body to be more user-friendly for non-technical users
+  let whatsNew = release?.body || "General improvements and performance optimizations.";
+  
+  // Replace technical "Full Changelog" pattern with a more readable link
+  // This looks for bold or plain "Full Changelog" text followed by the GitHub comparison URL
+  whatsNew = whatsNew.replace(
+    /(?:\*\*|)?Full Changelog(?:\*\*|)?:\s*(https:\/\/github\.com\/[^\s]+)/gi, 
+    '[View full version details on GitHub]($1)'
+  );
 
   return (
     <div className="container py-12 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl font-headline mb-4">Get Started for Free</h1>
-          <p className="text-xl text-muted-foreground">Download Desk Assistant AI for your Windows PC.</p>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl font-headline mb-4 text-foreground">Get Started for Free</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed">Download Desk Assistant AI for your Windows PC.</p>
         </div>
 
         <Card className="overflow-hidden shadow-2xl border-primary/10">
@@ -107,7 +115,7 @@ export default async function DownloadPage() {
               <div>
                 <h3 className="text-xl font-bold mb-6">What's New in {version}</h3>
                 <div className="rounded-xl bg-muted/50 p-6 border border-border/50">
-                  <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                  <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
                     <ReactMarkdown 
                       remarkPlugins={[remarkGfm]}
                       components={{
