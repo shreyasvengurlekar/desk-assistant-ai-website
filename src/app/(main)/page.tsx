@@ -26,23 +26,22 @@ const appScreenshot = PlaceHolderImages.find(p => p.id === 'app-screenshot');
 
 export default async function HomePage() {
   const release = await getLatestRelease();
-  const downloadUrl = release?.downloadUrl || "/download";
   const version = release?.version || "v1.0.0";
 
   return (
     <div className="flex flex-col">
-      <HeroSection downloadUrl={downloadUrl} version={version} />
+      <HeroSection version={version} />
       <ValuePropSection />
       <CoreFeaturesSection />
       <HowItWorksSection />
       <TestimonialSection />
       <PrivacySection />
-      <FinalCtaSection downloadUrl={downloadUrl} />
+      <FinalCtaSection />
     </div>
   );
 }
 
-function HeroSection({ downloadUrl, version }: { downloadUrl: string, version: string }) {
+function HeroSection({ version }: { version: string }) {
   return (
     <section className="py-20 md:py-32">
       <div className="container text-center">
@@ -59,7 +58,7 @@ function HeroSection({ downloadUrl, version }: { downloadUrl: string, version: s
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg" className="h-14 px-8 text-lg font-bold shadow-xl hover:shadow-primary/20 transition-all">
-            <Link href={downloadUrl}>
+            <Link href="/download">
               <Download className="mr-2 h-5 w-5" />
               Download Free for Windows
             </Link>
@@ -252,7 +251,7 @@ function PrivacySection() {
   );
 }
 
-function FinalCtaSection({ downloadUrl }: { downloadUrl: string }) {
+function FinalCtaSection() {
   return (
     <section className="py-32">
       <div className="container">
@@ -262,7 +261,7 @@ function FinalCtaSection({ downloadUrl }: { downloadUrl: string }) {
             Join thousands of users who have transformed their Windows experience. Download Desk Assistant AI for free today.
           </p>
           <Button asChild size="lg" className="h-16 px-10 text-xl font-bold shadow-lg hover:shadow-primary/20 transition-all">
-            <Link href={downloadUrl}>
+            <Link href="/download">
               <Download className="mr-3 h-6 w-6" />
               Download Now — It's Free
             </Link>
