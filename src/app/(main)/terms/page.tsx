@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
+  // Use a static date to avoid hydration mismatches
+  const lastUpdated = "October 26, 2023";
+
   return (
     <div className="container py-12 md:py-20">
       <div className="prose prose-lg dark:prose-invert mx-auto max-w-4xl">
@@ -14,7 +17,7 @@ export default function TermsPage() {
         <p className="lead">
           Welcome to Desk Assistant AI. By downloading, accessing, or using our application and services, you agree to be bound by these Terms of Service.
         </p>
-        <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p>Last updated: {lastUpdated}</p>
         
         <h2 id="license">1. License to Use</h2>
         <p>
