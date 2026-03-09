@@ -25,7 +25,6 @@ export default async function DownloadPage() {
   let whatsNew = release?.body || "General improvements and performance optimizations.";
   
   // Replace technical "Full Changelog" pattern with a more readable link
-  // This looks for bold or plain "Full Changelog" text followed by the GitHub comparison URL
   whatsNew = whatsNew.replace(
     /(?:\*\*|)?Full Changelog(?:\*\*|)?:\s*(https:\/\/github\.com\/[^\s]+)/gi, 
     '[View full version details on GitHub]($1)'
